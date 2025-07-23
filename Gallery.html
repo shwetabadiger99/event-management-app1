@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery - VK Events</title>
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .gallery img {
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        #modal img {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close, .nextBtn, .prevBtn {
+            position: absolute;
+            top: 20px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        .close {
+            right: 35px;
+        }
+
+        .nextBtn {
+            right: 80px;
+        }
+
+        .prevBtn {
+            left: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reception Photos</h1>
+    <div class="gallery" id="gallery">
+        <img src="img2.jpg" alt="Event 2" style="width:550px;">
+        <img src="img3.jpg" alt="Event 3" style="width:550px;">
+        <img src="img4.jpg" alt="Event 4" style="width:550px;">
+        <img src="img5.jpg" alt="Event 5" style="width:550px;">
+        <img src="img6.jpg" alt="Event 6" style="width:550px;">
+        <img src="img7.jpg" alt="Event 7" style="width:550px;">
+        <img src="img8.jpg" alt="Event 8" style="width:550px;">
+        <img src="img9.jpg" alt="Event 9" style="width:550px;">
+    </div>
+
+    <h1>Haladi Photos</h1>
+    <div class="gallery" id="haladiGallery">
+        <img src="h1.jpg" alt="Haladi 1" style="width:550px;">
+        <img src="h2.jpg" alt="Haladi 2" style="width:550px;">
+        <img src="h3.jpg" alt="Haladi 3" style="width:550px;">
+        <img src="h4.jpg" alt="Haladi 4" style="width:550px;">
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="prevBtn" onclick="prevImage()">&#10094;</span>
+        <span class="nextBtn" onclick="nextImage()">&#10095;</span>
+        <img id="modalImg" src="">
+    </div>
+
+    <script>
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modalImg");
+        const allImages = document.querySelectorAll(".gallery img");
+        let currentIndex = 0;
+
+        // Open modal when image is clicked
+        allImages.forEach((img, index) => {
+            img.addEventListener("click", () => {
+                modal.style.display = "block";
+                modalImg.src = img.src;
+                currentIndex = index;
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % allImages.length;
+            modalImg.src = allImages[currentIndex].src;
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+            modalImg.src = allImages[currentIndex].src;
+        }
+
+        // Optional: Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - VK Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefaf6; /* light ivory tone */
+      color: #222;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      color: #4b2e2e;
+      margin-bottom: 40px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 25px 20px;
+      border-radius: 10px;
+      border: 1px solid #e3dcd2;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+      transition: 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlideUp 0.8s ease-out forwards;
+    }
+
+    /* Animation delay for each card */
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #4b2e2e;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .card a {
+      font-weight: 600;
+      color: #8c4b4b;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contact VK Events</h1>
+
+  <div class="card-container">
+    <div class="card">
+      <h2>Email</h2>
+      <p>Reach out to us via email. We’ll respond within 24 hours.</p>
+      <a href="mailto:sbadiger6831@gmail.com">sbadiger6831@gmail.com →</a>
+    </div>
+
+    <div class="card">
+      <h2>Call Us</h2>
+      <p>Need immediate support? Call our team directly to discuss.</p>
+      <a href="tel:+917411126990">+91 74111 26990 →</a>
+    </div>
+
+    <div class="card">
+      <h2>WhatsApp</h2>
+      <p>Prefer chatting? Message us on WhatsApp for quick help.</p>
+      <a href="https://wa.me/917411126990" target="_blank">Chat on WhatsApp →</a>
+    </div>
+
+    <div class="card">
+      <h2>Instagram</h2>
+      <p>Follow and DM us on Instagram for updates and queries.</p>
+      <a href="https://instagram.com/vk_banashankari_events" target="_blank">@vk_banashankari_events →</a>
+    </div>
+  </div>
+
+</body>
+</html>

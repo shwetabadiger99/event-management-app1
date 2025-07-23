@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VK EVENTS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom, #f093fb, #f5576c);
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      padding: 20px 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffe600;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 10%;
+      min-height: 80vh;
+    }
+
+    .text-content {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .text-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .text-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #fce4ec;
+    }
+
+    .image-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .image-content img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .text-content h1 {
+        font-size: 36px;
+      }
+
+      .image-content {
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#">HOME</a>
+    <a href="about us.html">About Us</a>
+    <a href="contactus.html">Contact Us</a>
+    <a href="Gallery.html">Gallery</a>
+    <a href="booking.html">Booking</a>
+    <a href="#">Feedback</a>
+  </nav>
+
+  <div class="container">
+    <div class="text-content">
+      <h1>VK EVENTS</h1>
+      <p>
+        We started this firm in May 2021 to serve your dream moments and fill your life with colors and happiness.
+      </p>
+    </div>
+    <div class="image-content">
+      <img src="marriage.jpg" alt="Event Image" />
+    </div>
+  </div>
+
+</body>
+</html>
