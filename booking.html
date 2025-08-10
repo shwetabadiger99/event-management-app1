@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Booking</title>
+  <style>
+    body {
+      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Book Your Event</h1>
+    <form id="eventBookingForm">
+      <label for="eventType">Event Type:</label>
+      <select id="eventType" required>
+        <option value="">-- Select --</option>
+        <option value="wedding">Wedding</option>
+        <option value="conference">Conference</option>
+        <option value="birthday">Birthday Party</option>
+        <option value="corporate">Corporate Event</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="eventName">Event Name:</label>
+      <input type="text" id="eventName" required />
+
+      <label for="eventDate">Event Date:</label>
+      <input type="date" id="eventDate" required />
+
+      <label for="startTime">Start Time:</label>
+      <input type="time" id="startTime" required />
+
+      <label for="endTime">End Time:</label>
+      <input type="time" id="endTime" required />
+
+      <label for="attendees">Number of Attendees:</label>
+      <input type="number" id="attendees" min="1" required />
+
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" required />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required />
+
+      <label for="specialRequests">Special Requests:</label>
+      <textarea id="specialRequests" rows="3"></textarea>
+
+      <button type="submit">Submit Booking</button>
+    </form>
+    <div class="message" id="formMessage"></div>
+  </div>
+
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+   
+    const firebaseConfig = {
+      apiKey: "AIzaSyCk2QJAfwhpvmMK76VpZl1kEmRhNOdsyBw",
+      authDomain: "bookingform-57917.firebaseapp.com",
+      projectId: "bookingform-57917",
+      storageBucket: "bookingform-57917.appspot.com",
+      messagingSenderId: "927349983001",
+      appId: "1:927349983001:web:09c0dee4b2d6709164a788"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+   
+    const form = document.getElementById("eventBookingForm");
+    const messageBox = document.getElementById("formMessage");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = {
+        eventType: document.getElementById("eventType").value,
+        eventName: document.getElementById("eventName").value,
+        eventDate: document.getElementById("eventDate").value,
+        startTime: document.getElementById("startTime").value,
+        endTime: document.getElementById("endTime").value,
+        attendees: parseInt(document.getElementById("attendees").value),
+        fullName: document.getElementById("fullName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        specialRequests: document.getElementById("specialRequests").value,
+        timestamp: new Date()
+      };
+
+      try {
+        await addDoc(collection(db, "eventBookings"), data);
+        messageBox.innerHTML = "<div class='success'>Booking submitted successfully!</div>";
+        form.reset();
+      } catch (err) {
+        console.error("Error adding document: ", err);
+        messageBox.innerHTML = "<div class='error'>Failed to submit booking. Please try again.</div>";
+      }
+    });
+  </script>
+</body>
+</html>
